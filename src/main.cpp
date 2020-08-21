@@ -556,7 +556,8 @@ void do_render(GraphicsState* gfx)
 
         if (tk::g_state && tk::g_state->map)
         {
-            glm::mat4 projection = glm::perspective(glm::radians(75.0f), (float)gfx->width / (float)gfx->height, 0.1f, 100000.0f);
+            GLfloat aspect = (float)gfx->width / (float)gfx->height;
+            glm::mat4 projection = glm::infinitePerspective(glm::radians(75.0f), aspect, 0.1f);
 
             // flip x axis, from right handed (gl) to left handed (unity)
             projection = glm::scale(projection, glm::vec3(-1.0f, 1.0f, 1.0f));
